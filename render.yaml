@@ -1,10 +1,13 @@
 services:
-  - type: worker
+  - type: web
     name: discord-ingestion-bot
     runtime: python
     rootDir: ingestion-service
     buildCommand: pip install -r requirements.txt
     startCommand: python run_bot.py
+    # For Render Free Tier
+    plan: free
+    healthCheckPath: /
     envVars:
       - key: DISCORD_TOKEN
         sync: false

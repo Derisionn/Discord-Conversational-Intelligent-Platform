@@ -153,6 +153,21 @@ class DiscordIntelBot(discord.Client):
         log.exception("Unhandled error in event '%s'", event_method)
 
 
+import threading
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+class HealthCheckHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+
+def run_health_server():
+    port = int(os.getenv("PORT", "10000"))
+    server = HTTPServer(("0.0.0.0", port), HealthCheckHandler)
+    log.info(f"Health check server running on port {port}")
+    server.serve_forever()
+
 # ─── Entry point (when run directly) ─────────────────────────────────────────
 
 def main() -> None:
@@ -162,6 +177,10 @@ def main() -> None:
             "[ERROR] DISCORD_TOKEN not set. "
             "Copy .env.example → .env and fill in your bot token."
         )
+    
+    # Start health check server in a background thread for Render
+    threading.Thread(target=run_health_server, daemon=True).start()
+
     client = DiscordIntelBot()
     client.run(token, log_handler=None)   # we handle logging ourselves
 

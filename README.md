@@ -1,15 +1,14 @@
 # Discord Conversational Intelligent Platform
 
-A real-time Discord message ingestion service that stores chat data in MongoDB Atlas. Part of an intelligent platform for conversational analysis.
+This is a monorepo containing multiple microservices for the intelligent platform.
 
-## Features
-- Real-time message capture using Discord.py.
-- Asynchronous storage in MongoDB Atlas via Motor.
-- Historical message fetching support.
-- Production-ready (Render/Docker support).
+## Project Structure
+- `ingestion-service/`: Discord bot that captures real-time messages and stores them in MongoDB Atlas.
+- (More services coming soon...)
 
-## Setup
+## Ingestion Service Setup
 1. Clone the repository.
-2. Create a `.env` file from `.env.example`.
-3. Install dependencies: `pip install -r requirements.txt`.
-4. Run: `python run_bot.py`.
+2. `cd ingestion-service`
+3. Create a `.env` file from `.env.example`.
+4. Install dependencies: `pip install -r requirements.txt`.
+5. Run: `python run_bot.py`.

@@ -1,10 +1,11 @@
 # Environment
-.env
+ingestion-service/.env
 
 # Virtual Environment
 venv/
 env/
 .venv/
+ingestion-service/venv/
 
 # Python
 __pycache__/

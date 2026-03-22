@@ -1,7 +1,7 @@
-services:
   - type: worker
     name: discord-ingestion-bot
     runtime: python
+    rootDir: ingestion-service
     buildCommand: pip install -r requirements.txt
     startCommand: python run_bot.py
     envVars:

@@ -1,0 +1,7 @@
+# Install production deps first
+-r requirements.txt
+
+# Testing only (not installed in Docker/production)
+pytest>=8.0.0
+pytest-asyncio>=0.23.6
+mongomock-motor>=0.0.21

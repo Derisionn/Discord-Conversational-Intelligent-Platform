@@ -4,7 +4,5 @@
     "builder": "DOCKERFILE",
     "dockerfilePath": "ingestion-service/Dockerfile"
   },
-  "deploy": {
-    "rootDirectory": "ingestion-service"
-  }
+  "deploy": {}
 }
